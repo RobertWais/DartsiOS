@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ECE0D75229AE580008ED07A /* ScoreboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */; };
+		2ECE0D78229AE5E5008ED07A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D77229AE5E5008ED07A /* Player.swift */; };
+		2ECE0D7A229AE62B008ED07A /* ScoreboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECE0D79229AE62B008ED07A /* ScoreboardCell.xib */; };
 		2EFFAFBF228E51CC00E3B456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFBE228E51CC00E3B456 /* AppDelegate.swift */; };
-		2EFFAFC1228E51CC00E3B456 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC0228E51CC00E3B456 /* ViewController.swift */; };
+		2EFFAFC1228E51CC00E3B456 /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC0228E51CC00E3B456 /* GameBoardVC.swift */; };
 		2EFFAFC4228E51CC00E3B456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC2228E51CC00E3B456 /* Main.storyboard */; };
 		2EFFAFC7228E51CC00E3B456 /* Darts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC5228E51CC00E3B456 /* Darts.xcdatamodeld */; };
 		2EFFAFC9228E51CE00E3B456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC8228E51CE00E3B456 /* Assets.xcassets */; };
 		2EFFAFCC228E51CE00E3B456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFAFCA228E51CE00E3B456 /* LaunchScreen.storyboard */; };
+		2EFFAFD4228E532900E3B456 /* PlayerScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFD3228E532900E3B456 /* PlayerScoreCell.swift */; };
+		2EFFAFD6228E596300E3B456 /* ChoosePlayersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFD5228E596300E3B456 /* ChoosePlayersVC.swift */; };
+		2EFFAFD8228E602900E3B456 /* PlayerScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFAFD7228E602900E3B456 /* PlayerScoreCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardCell.swift; sourceTree = "<group>"; };
+		2ECE0D77229AE5E5008ED07A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2ECE0D79229AE62B008ED07A /* ScoreboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreboardCell.xib; sourceTree = "<group>"; };
 		2EFFAFBB228E51CC00E3B456 /* Darts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFFAFBE228E51CC00E3B456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2EFFAFC0228E51CC00E3B456 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2EFFAFC0228E51CC00E3B456 /* GameBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardVC.swift; sourceTree = "<group>"; };
 		2EFFAFC3228E51CC00E3B456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EFFAFC6228E51CC00E3B456 /* Darts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Darts.xcdatamodel; sourceTree = "<group>"; };
 		2EFFAFC8228E51CE00E3B456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EFFAFCB228E51CE00E3B456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EFFAFCD228E51CE00E3B456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EFFAFD3228E532900E3B456 /* PlayerScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScoreCell.swift; sourceTree = "<group>"; };
+		2EFFAFD5228E596300E3B456 /* ChoosePlayersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePlayersVC.swift; sourceTree = "<group>"; };
+		2EFFAFD7228E602900E3B456 /* PlayerScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerScoreCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2ECE0D73229AE54A008ED07A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EFFAFD3228E532900E3B456 /* PlayerScoreCell.swift */,
+				2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2ECE0D76229AE5C2008ED07A /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				2EFFAFD7228E602900E3B456 /* PlayerScoreCell.xib */,
+				2ECE0D79229AE62B008ED07A /* ScoreboardCell.xib */,
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
+		2ECE0D7B229AE64E008ED07A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2ECE0D77229AE5E5008ED07A /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2ECE0D7C229AE661008ED07A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EFFAFD5228E596300E3B456 /* ChoosePlayersVC.swift */,
+				2EFFAFC0228E51CC00E3B456 /* GameBoardVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		2EFFAFB2228E51CC00E3B456 = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +103,11 @@
 		2EFFAFBD228E51CC00E3B456 /* Darts */ = {
 			isa = PBXGroup;
 			children = (
+				2ECE0D7C229AE661008ED07A /* ViewControllers */,
+				2ECE0D7B229AE64E008ED07A /* Models */,
+				2ECE0D76229AE5C2008ED07A /* Nibs */,
+				2ECE0D73229AE54A008ED07A /* Views */,
 				2EFFAFBE228E51CC00E3B456 /* AppDelegate.swift */,
-				2EFFAFC0228E51CC00E3B456 /* ViewController.swift */,
 				2EFFAFC2228E51CC00E3B456 /* Main.storyboard */,
 				2EFFAFC8228E51CE00E3B456 /* Assets.xcassets */,
 				2EFFAFCA228E51CE00E3B456 /* LaunchScreen.storyboard */,
@@ -126,7 +176,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EFFAFCC228E51CE00E3B456 /* LaunchScreen.storyboard in Resources */,
+				2EFFAFD8228E602900E3B456 /* PlayerScoreCell.xib in Resources */,
 				2EFFAFC9228E51CE00E3B456 /* Assets.xcassets in Resources */,
+				2ECE0D7A229AE62B008ED07A /* ScoreboardCell.xib in Resources */,
 				2EFFAFC4228E51CC00E3B456 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +190,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EFFAFC1228E51CC00E3B456 /* ViewController.swift in Sources */,
+				2ECE0D75229AE580008ED07A /* ScoreboardCell.swift in Sources */,
+				2EFFAFD6228E596300E3B456 /* ChoosePlayersVC.swift in Sources */,
+				2EFFAFD4228E532900E3B456 /* PlayerScoreCell.swift in Sources */,
+				2EFFAFC1228E51CC00E3B456 /* GameBoardVC.swift in Sources */,
+				2ECE0D78229AE5E5008ED07A /* Player.swift in Sources */,
 				2EFFAFC7228E51CC00E3B456 /* Darts.xcdatamodeld in Sources */,
 				2EFFAFBF228E51CC00E3B456 /* AppDelegate.swift in Sources */,
 			);
@@ -287,6 +343,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V78FR972C;
 				INFOPLIST_FILE = Darts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -304,6 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6V78FR972C;
 				INFOPLIST_FILE = Darts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

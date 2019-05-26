@@ -10,13 +10,29 @@ import UIKit
 
 class ChoosePlayersVC: UIViewController {
 
+    @IBOutlet weak var numberOfPlayersField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func PlayBtnPressed(_ sender: Any) {
+        let someNum: Int?
+        
+        guard let textToInt = numberOfPlayersField.text else {
+            return
+        }
+        someNum = Int(textToInt)
+        if let someNum = someNum{
+            //
+            let gameBoard = GameBoardVC()
+            gameBoard.numberOfPlayers = someNum
+            self.show(gameBoard, sender: self)
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
