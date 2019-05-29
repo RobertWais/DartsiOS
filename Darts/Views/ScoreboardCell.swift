@@ -34,22 +34,36 @@ class ScoreboardCell: UICollectionViewCell {
             btn.layer.masksToBounds = true
             btn.backgroundColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1.0)
             
-            btn.layer.borderColor = UIColor.white.cgColor
+            btn.layer.borderColor = UIColor.black.cgColor
             btn.layer.borderWidth = 2.0
-            btn.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), for: UIControl.State.normal)
+            btn.setTitleColor(UIColor.black, for: UIControl.State.normal)
 
-            btn.backgroundColor = UIColor.black
+            btn.backgroundColor = UIColor.white
             if index%2 == 0 {
                 //btn.backgroundColor = UIColor.white
             }
+            
+            let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(hold(recognizer:)))
+            self.addGestureRecognizer(gestureRecognizer)
+            
             btn.tag = 15+(5-index)
             btn.setTitle("\(points[index])", for: .normal)
             self.addSubview(btn)
+            
+            
             
         }
     }
     
     @objc func buttonTouched(sender: UIButton!){
-        print("Scoreboard: \(sender.tag)")
+        print("Single Touch: \(sender.tag)")
     }
+    
+    @objc func hold(recognizer: UILongPressGestureRecognizer){
+        if(recognizer.state == UIGestureRecognizer.State.began){
+            print("Single\\Double\\Triple")
+        }
+    }
+    
+    
 }

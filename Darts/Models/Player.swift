@@ -16,6 +16,8 @@ class Player: NSObject {
     var _mpr: Int?
     var _ppr: Int?
     
+    var rounds = [Round]()
+    
     init(name: String?, number: Int?, score: Int?, mpr: Int?, ppr: Int? ) {
         self._name = name
         self._number = number
@@ -40,14 +42,14 @@ class Player: NSObject {
     
     var score: Int {
         guard let score = _score else {
-            return 0
+            return getTotalScore()
         }
         return score
     }
     
     var mpr: Int {
         guard let mpr = _mpr else {
-            return 0
+            return getTotalMarksPerRound()
         }
         return mpr
     }
@@ -57,6 +59,26 @@ class Player: NSObject {
             return 0
         }
         return ppr
+    }
+    
+    func addRound(round: Round){
+        rounds.append(round)
+    }
+    
+    func getTotalScore()->Int{
+        var totalScore = 0
+        for round in rounds {
+            totalScore += round.score
+        }
+        return totalScore
+    }
+    
+    func getTotalMarksPerRound()->Int{
+        var totalMarksPerRound = 0
+        for round in rounds {
+            totalMarksPerRound += round.marks
+        }
+        return totalMarksPerRound/rounds.count
     }
     
 }
