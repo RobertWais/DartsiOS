@@ -9,6 +9,7 @@
 import Foundation
 
 class Round: NSObject {
+    
     var darts = [Dart]()
     
     
@@ -18,7 +19,7 @@ class Round: NSObject {
         darts.append(third)
     }
     
-    init(){
+    override init(){
         
     }
     
@@ -53,3 +54,5 @@ class Round: NSObject {
         darts.append(addDart)
     }
 }
+
+

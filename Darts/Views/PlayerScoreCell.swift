@@ -37,16 +37,7 @@ class PlayerScoreCell: UICollectionViewCell {
     func createLbls(){
         let seperator = height/7
         for index in 0..<7{
-            let lbl = UILabel(frame: CGRect(x: 0, y: CGFloat(index)*CGFloat(seperator), width: width, height: seperator))
-
-//            if index==0 || index == 6 {
-//                lbl.layer.cornerRadius = lbl.bounds.size.height/2;
-//                lbl.layer.masksToBounds = true
-//            }
-//            lbl.backgroundColor = UIColor.black
-//            lbl.layer.borderColor = UIColor.white.cgColor
-//            lbl.layer.borderWidth = 2.0
-            
+            let lbl = UILabel(frame: CGRect(x: 0, y: CGFloat(index)*CGFloat(seperator), width: width, height: seperator))            
             lbl.tag = 15+index
             
             lbl.textAlignment = NSTextAlignment.center

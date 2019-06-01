@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EB7662B22A33EA900EEDE89 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7662A22A33EA900EEDE89 /* Stats.swift */; };
+		2EB7662D22A3424100EEDE89 /* DartScratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7662C22A3424100EEDE89 /* DartScratch.swift */; };
+		2EB7662F22A3434100EEDE89 /* DartScratches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7662E22A3434100EEDE89 /* DartScratches.swift */; };
 		2ECE0D75229AE580008ED07A /* ScoreboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */; };
 		2ECE0D78229AE5E5008ED07A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D77229AE5E5008ED07A /* Player.swift */; };
 		2ECE0D7A229AE62B008ED07A /* ScoreboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECE0D79229AE62B008ED07A /* ScoreboardCell.xib */; };
@@ -16,6 +19,7 @@
 		2ECE0D86229CDFDC008ED07A /* DartGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D85229CDFDC008ED07A /* DartGameObject.swift */; };
 		2ECE0D88229E1E01008ED07A /* Dart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D87229E1E00008ED07A /* Dart.swift */; };
 		2ECE0D8A229E1F12008ED07A /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D89229E1F12008ED07A /* Round.swift */; };
+		2ECE0D8D229E2CDB008ED07A /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D8C229E2CDB008ED07A /* Scoreboard.swift */; };
 		2EFFAFBF228E51CC00E3B456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFBE228E51CC00E3B456 /* AppDelegate.swift */; };
 		2EFFAFC1228E51CC00E3B456 /* GameBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC0228E51CC00E3B456 /* GameBoardVC.swift */; };
 		2EFFAFC4228E51CC00E3B456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFAFC2228E51CC00E3B456 /* Main.storyboard */; };
@@ -28,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EB7662A22A33EA900EEDE89 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		2EB7662C22A3424100EEDE89 /* DartScratch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartScratch.swift; sourceTree = "<group>"; };
+		2EB7662E22A3434100EEDE89 /* DartScratches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartScratches.swift; sourceTree = "<group>"; };
 		2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardCell.swift; sourceTree = "<group>"; };
 		2ECE0D77229AE5E5008ED07A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		2ECE0D79229AE62B008ED07A /* ScoreboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreboardCell.xib; sourceTree = "<group>"; };
@@ -37,6 +44,7 @@
 		2ECE0D85229CDFDC008ED07A /* DartGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartGameObject.swift; sourceTree = "<group>"; };
 		2ECE0D87229E1E00008ED07A /* Dart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart.swift; sourceTree = "<group>"; };
 		2ECE0D89229E1F12008ED07A /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		2ECE0D8C229E2CDB008ED07A /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		2EFFAFBB228E51CC00E3B456 /* Darts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFFAFBE228E51CC00E3B456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EFFAFC0228E51CC00E3B456 /* GameBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardVC.swift; sourceTree = "<group>"; };
@@ -68,6 +76,7 @@
 				2ECE0D74229AE580008ED07A /* ScoreboardCell.swift */,
 				2ECE0D7F229CCCF5008ED07A /* EmptyCell.swift */,
 				2ECE0D83229CD950008ED07A /* PlayerNameCell.swift */,
+				2ECE0D8C229E2CDB008ED07A /* Scoreboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -88,6 +97,8 @@
 				2ECE0D77229AE5E5008ED07A /* Player.swift */,
 				2ECE0D87229E1E00008ED07A /* Dart.swift */,
 				2ECE0D89229E1F12008ED07A /* Round.swift */,
+				2EB7662A22A33EA900EEDE89 /* Stats.swift */,
+				2EB7662E22A3434100EEDE89 /* DartScratches.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,6 +150,7 @@
 				2EFFAFCA228E51CE00E3B456 /* LaunchScreen.storyboard */,
 				2EFFAFCD228E51CE00E3B456 /* Info.plist */,
 				2EFFAFC5228E51CC00E3B456 /* Darts.xcdatamodeld */,
+				2EB7662C22A3424100EEDE89 /* DartScratch.swift */,
 			);
 			path = Darts;
 			sourceTree = "<group>";
@@ -220,12 +232,16 @@
 				2ECE0D75229AE580008ED07A /* ScoreboardCell.swift in Sources */,
 				2ECE0D84229CD950008ED07A /* PlayerNameCell.swift in Sources */,
 				2ECE0D80229CCCF5008ED07A /* EmptyCell.swift in Sources */,
+				2EB7662B22A33EA900EEDE89 /* Stats.swift in Sources */,
 				2EFFAFD6228E596300E3B456 /* ChoosePlayersVC.swift in Sources */,
+				2EB7662D22A3424100EEDE89 /* DartScratch.swift in Sources */,
 				2ECE0D88229E1E01008ED07A /* Dart.swift in Sources */,
 				2EFFAFD4228E532900E3B456 /* PlayerScoreCell.swift in Sources */,
 				2ECE0D86229CDFDC008ED07A /* DartGameObject.swift in Sources */,
+				2EB7662F22A3434100EEDE89 /* DartScratches.swift in Sources */,
 				2EFFAFC1228E51CC00E3B456 /* GameBoardVC.swift in Sources */,
 				2ECE0D78229AE5E5008ED07A /* Player.swift in Sources */,
+				2ECE0D8D229E2CDB008ED07A /* Scoreboard.swift in Sources */,
 				2EFFAFC7228E51CC00E3B456 /* Darts.xcdatamodeld in Sources */,
 				2ECE0D8A229E1F12008ED07A /* Round.swift in Sources */,
 				2EFFAFBF228E51CC00E3B456 /* AppDelegate.swift in Sources */,

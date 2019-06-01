@@ -8,10 +8,18 @@
 
 import Foundation
 
-
+protocol DartsGame: class {
+    func addDartScore()
+    func removeDartScore()
+    func nextRound()
+    func updateStats(_ stats: Stats)
+    func checkWinner()
+}
 
 class DartGameObjectViewModel: NSObject{
     
+    //Create delegate
+    weak var delegate: DartsGame?
     var players = [Player]()
     var currentPlayer: Player!
     var currRound = Round()
@@ -32,11 +40,15 @@ class DartGameObjectViewModel: NSObject{
     func removeDart(dart: Dart){
         currRound.clearDart(removeDart: dart)
         // Call back to remove UI Dart Display
+        
+        // Return all data back Score, MPR, Values - Crossed
+        delegate?.removeDartScore()
     }
     
     func addRound(){
         currentPlayer.addRound(round: currRound)
         moveCurrPlayer()
+        
         // Call back clear round display
         // Move highlighted player
     }
@@ -44,6 +56,17 @@ class DartGameObjectViewModel: NSObject{
     func moveCurrPlayer(){
         currentPlayer = players[(1+counter)%3]
         counter = counter+1
+    }
+    
+    func retrieveAllStats(){
+        var score = [Int]()
+        var mpr = [Double]()
+        
+        for index in 0..<players.count{
+            score.append(players[index].getTotalScore())
+            mpr.append(players[index].getTotalMarksPerRound())
+        }
+        delegate?.updateStats(Stats(score: score, mpr: mpr))
     }
     
     func checkWinner(){

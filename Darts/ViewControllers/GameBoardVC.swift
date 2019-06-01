@@ -16,8 +16,11 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     var numberOfSections = 0;
     var emptyCell = -1;
     var insets: CGFloat = 5;
+    
     var collectionView: UICollectionView?
     var playerNames: UIView?
+    var scoreBoard: UIView?
+    var nextBtn: UIButton?
 
     //@IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
@@ -28,11 +31,11 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         //Collection View takes a third of the screen
         initCV()
         //Player names take up a 12th of the screen
-        initPlayerNames()
+        initAllOthers()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    
+    // MARK: Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfSections
     }
@@ -49,7 +52,7 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerScoreCell", for: indexPath)  as! PlayerScoreCell
-            cell.configureCell(name: "Player: \(indexPath.row)", playerNumber: indexPath.row, width: widthOfCell(), height: heightOfCell())
+            cell.configureCell(name: "Play: \(indexPath.row)", playerNumber: indexPath.row, width: widthOfCell(), height: heightOfCell())
             return cell
         }
         
@@ -58,30 +61,6 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return divisionOfScreenForScoreboard()
     }
-    
-    // Returns the size of each cell to be displayed
-    // equally on the screen
-    func divisionOfScreenForScoreboard()->CGSize{
-        return CGSize(width: widthOfCell(), height: heightOfCell())
-    }
-    
-    // Returns width of a player cell
-    func widthOfCell()->CGFloat{
-        guard let cv = collectionView else{
-            return 0
-        }
-        return (cv.frame.width-insets*2)/CGFloat(numberOfSections)
-    }
-    
-    // Returns height of a player cell
-    func heightOfCell()->CGFloat{
-        guard let cv = collectionView else{
-            return 0
-        }
-        // The score takes 2/3 of the screen up
-        return (cv.frame.height)/3*2
-    }
-    
     
     func initCV(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -118,17 +97,36 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         collectionView?.backgroundColor = UIColor.black
     }
     
-    func initPlayerNames(){
-        playerNames = PlayerNameCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/12), numberOfSections: numberOfSections)
-        guard let players = playerNames else {
-            // Throw error
-            return
-        }
-        view.addSubview(players)
-        
+    // MARK: Dimensions
+    
+    // Returns the size of each cell to be displayed
+    // equally on the screen
+    func divisionOfScreenForScoreboard()->CGSize{
+        return CGSize(width: widthOfCell(), height: heightOfCell())
     }
     
-    func getNumberOfSections(){
+    // Returns width of a player cell
+    func widthOfCell()->CGFloat{
+        guard let cv = collectionView else{
+            return 0
+        }
+        return (cv.frame.width-insets*2)/CGFloat(numberOfSections)
+    }
+    
+    // Returns height of a player cell
+    func heightOfCell()->CGFloat{
+        guard let cv = collectionView else{
+            return 0
+        }
+        // The score takes 2/3 of the screen up
+        return (cv.frame.height)/3*2
+    }
+    
+    //MARK: Players
+    
+    
+    
+    private func getNumberOfSections(){
         if numberOfPlayers % 2 == 0 {
             // ex 1 2 score 3 4
             numberOfSections = numberOfPlayers + 1
@@ -139,4 +137,38 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         }
     }
     
+}
+
+// Other UI Updates not concerning Collection View
+extension GameBoardVC {
+    
+    private func initAllOthers(){
+        initPlayerNames()
+        initNextBtn()
+        initScoreboard()
+    }
+    private func initPlayerNames(){
+        playerNames = PlayerNameCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/12), numberOfSections: numberOfSections)
+        guard let players = playerNames else {
+            // Throw error
+            return
+        }
+        view.addSubview(players)
+    }
+    
+    private func initNextBtn(){
+        nextBtn = UIButton(frame: CGRect(x: 0, y: view.frame.height-(view.frame.height/12), width: view.frame.width, height: view.frame.height/12))
+        guard let btn = nextBtn else {return}
+        
+        btn.backgroundColor = UIColor.white
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.setTitle("Next Round", for: .normal)
+        view.addSubview(btn)
+    }
+    
+    private func initScoreboard(){
+        scoreBoard = Scoreboard(frame:  CGRect(x: 5, y: (view.frame.height/12)*9, width: view.frame.width-10, height: (view.frame.height/12)*2), numberOfSections: numberOfSections)
+        guard let score = scoreBoard else { return }
+        view.addSubview(score)
+    }
 }
