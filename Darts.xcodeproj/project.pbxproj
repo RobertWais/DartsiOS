@@ -16,7 +16,7 @@
 		2ECE0D7E229CCCC5008ED07A /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ECE0D7D229CCCC5008ED07A /* EmptyCell.xib */; };
 		2ECE0D80229CCCF5008ED07A /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D7F229CCCF5008ED07A /* EmptyCell.swift */; };
 		2ECE0D84229CD950008ED07A /* PlayerNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D83229CD950008ED07A /* PlayerNameCell.swift */; };
-		2ECE0D86229CDFDC008ED07A /* DartGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D85229CDFDC008ED07A /* DartGameObject.swift */; };
+		2ECE0D86229CDFDC008ED07A /* DartGameObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D85229CDFDC008ED07A /* DartGameObjectViewModel.swift */; };
 		2ECE0D88229E1E01008ED07A /* Dart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D87229E1E00008ED07A /* Dart.swift */; };
 		2ECE0D8A229E1F12008ED07A /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D89229E1F12008ED07A /* Round.swift */; };
 		2ECE0D8D229E2CDB008ED07A /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE0D8C229E2CDB008ED07A /* Scoreboard.swift */; };
@@ -41,7 +41,7 @@
 		2ECE0D7D229CCCC5008ED07A /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		2ECE0D7F229CCCF5008ED07A /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		2ECE0D83229CD950008ED07A /* PlayerNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameCell.swift; sourceTree = "<group>"; };
-		2ECE0D85229CDFDC008ED07A /* DartGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartGameObject.swift; sourceTree = "<group>"; };
+		2ECE0D85229CDFDC008ED07A /* DartGameObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartGameObjectViewModel.swift; sourceTree = "<group>"; };
 		2ECE0D87229E1E00008ED07A /* Dart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart.swift; sourceTree = "<group>"; };
 		2ECE0D89229E1F12008ED07A /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		2ECE0D8C229E2CDB008ED07A /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
@@ -69,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EB7663022A42CC100EEDE89 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2EB7662C22A3424100EEDE89 /* DartScratch.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		2ECE0D73229AE54A008ED07A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +123,7 @@
 		2ECE0D8B229E238D008ED07A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				2ECE0D85229CDFDC008ED07A /* DartGameObject.swift */,
+				2ECE0D85229CDFDC008ED07A /* DartGameObjectViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 		2EFFAFBD228E51CC00E3B456 /* Darts */ = {
 			isa = PBXGroup;
 			children = (
+				2EB7663022A42CC100EEDE89 /* Enums */,
 				2ECE0D8B229E238D008ED07A /* ViewModels */,
 				2ECE0D7C229AE661008ED07A /* ViewControllers */,
 				2ECE0D7B229AE64E008ED07A /* Models */,
@@ -150,7 +159,6 @@
 				2EFFAFCA228E51CE00E3B456 /* LaunchScreen.storyboard */,
 				2EFFAFCD228E51CE00E3B456 /* Info.plist */,
 				2EFFAFC5228E51CC00E3B456 /* Darts.xcdatamodeld */,
-				2EB7662C22A3424100EEDE89 /* DartScratch.swift */,
 			);
 			path = Darts;
 			sourceTree = "<group>";
@@ -237,7 +245,7 @@
 				2EB7662D22A3424100EEDE89 /* DartScratch.swift in Sources */,
 				2ECE0D88229E1E01008ED07A /* Dart.swift in Sources */,
 				2EFFAFD4228E532900E3B456 /* PlayerScoreCell.swift in Sources */,
-				2ECE0D86229CDFDC008ED07A /* DartGameObject.swift in Sources */,
+				2ECE0D86229CDFDC008ED07A /* DartGameObjectViewModel.swift in Sources */,
 				2EB7662F22A3434100EEDE89 /* DartScratches.swift in Sources */,
 				2EFFAFC1228E51CC00E3B456 /* GameBoardVC.swift in Sources */,
 				2ECE0D78229AE5E5008ED07A /* Player.swift in Sources */,

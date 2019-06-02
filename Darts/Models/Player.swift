@@ -16,8 +16,9 @@ class Player: NSObject {
     var _mpr: Double?
     var _ppr: Int?
     
-    
+    var scratches = DartScratches()
     var rounds = [Round]()
+    var currRound = Round()
     
     init(name: String?, number: Int?, score: Int?, mpr: Double?, ppr: Int? ) {
         self._name = name
@@ -62,8 +63,16 @@ class Player: NSObject {
         return ppr
     }
     
-    func addRound(round: Round){
-        rounds.append(round)
+    func addToCurrentRound(dart: Dart){
+        currRound.addDart(addDart: dart)
+    }
+    
+    func removeDartFromCurrentRound(dart: Dart){
+        currRound.clearDart(removeDart: dart)
+    }
+    
+    func completeRound(){
+        rounds.append(currRound)
     }
     
     func getTotalScore()->Int{
@@ -71,7 +80,7 @@ class Player: NSObject {
         for round in rounds {
             totalScore += round.score
         }
-        return totalScore
+        return totalScore + currRound.score
     }
     
     func getTotalMarksPerRound()->Double{
@@ -79,7 +88,23 @@ class Player: NSObject {
         for round in rounds {
             totalMarksPerRound += round.marks
         }
-        return Double(totalMarksPerRound)/Double(rounds.count)
+        return Double(totalMarksPerRound + currRound.marks)/Double(rounds.count + 1)
     }
     
+    func getScratches()->DartScratches{
+        var dartScratches = DartScratches()
+        
+        // Add scratches from previous rounds
+        for round in rounds {
+            dartScratches.addScratch(dart: round.darts[0])
+            dartScratches.addScratch(dart: round.darts[1])
+            dartScratches.addScratch(dart: round.darts[2])
+        }
+        
+        // Add scratches from current round
+        for index in 0..<currRound.darts.count{
+            dartScratches.addScratch(dart: currRound.darts[index])
+        }
+        return dartScratches
+    }
 }

@@ -13,6 +13,7 @@ protocol DartsGame: class {
     func removeDartScore()
     func nextRound()
     func updateStats(_ stats: Stats)
+    func updateIndyStats(score: Int, mpr: Double, scratches: DartScratches)
     func checkWinner()
 }
 
@@ -22,7 +23,6 @@ class DartGameObjectViewModel: NSObject{
     weak var delegate: DartsGame?
     var players = [Player]()
     var currentPlayer: Player!
-    var currRound = Round()
     
     var counter = 0
     
@@ -33,12 +33,12 @@ class DartGameObjectViewModel: NSObject{
     
     
     func addDart(dart: Dart){
-        currRound.addDart(addDart: dart)
+        currentPlayer.addToCurrentRound(dart: dart)
         // Call back to add UI Dart Display
     }
     
     func removeDart(dart: Dart){
-        currRound.clearDart(removeDart: dart)
+        currentPlayer.removeDartFromCurrentRound(dart: dart)
         // Call back to remove UI Dart Display
         
         // Return all data back Score, MPR, Values - Crossed
@@ -46,7 +46,7 @@ class DartGameObjectViewModel: NSObject{
     }
     
     func addRound(){
-        currentPlayer.addRound(round: currRound)
+        currentPlayer.completeRound()
         moveCurrPlayer()
         
         // Call back clear round display
@@ -58,19 +58,31 @@ class DartGameObjectViewModel: NSObject{
         counter = counter+1
     }
     
-    func retrieveAllStats(){
-        var score = [Int]()
-        var mpr = [Double]()
-        
-        for index in 0..<players.count{
-            score.append(players[index].getTotalScore())
-            mpr.append(players[index].getTotalMarksPerRound())
-        }
-        delegate?.updateStats(Stats(score: score, mpr: mpr))
+    func retrieveCurrentStats(){
+        // Add scratches
+        delegate?.updateIndyStats(score: currentPlayer.getTotalScore(), mpr: currentPlayer.getTotalMarksPerRound(), scratches: currentPlayer.getScratches())
     }
     
     func checkWinner(){
         // Stop game, Modal Pop - Up confirming win, Close or keep playing
     }
     
+    
+    func retrieveAllStats(){
+        var score = [Int]()
+        var mpr = [Double]()
+        var scratches = [DartScratches]()
+        
+        for index in 0..<players.count{
+            score.append(players[index].getTotalScore())
+            mpr.append(players[index].getTotalMarksPerRound())
+            scratches.append(players[index].getScratches())
+        }
+        
+        // Add scratches
+        delegate?.updateStats(Stats(score: score, mpr: mpr, scratches: scratches))
+    }
 }
+
+// Change so that players hold all the rounds
+// Constantly adding to darts to a player

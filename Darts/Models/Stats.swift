@@ -12,9 +12,11 @@ class Stats{
     
     var score = [Int]()
     var mpr = [Double]()
+    var dartScratches = [DartScratches]()
     
-    init(score: [Int], mpr: [Double]){
+    init(score: [Int], mpr: [Double], scratches: [DartScratches]){
         self.score = score
         self.mpr = mpr
+        self.dartScratches = scratches
     }
 }

@@ -12,6 +12,7 @@ protocol gameProtocol: class {
     
 }
 class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+   
     var numberOfPlayers = 4;
     var numberOfSections = 0;
     var emptyCell = -1;
@@ -21,11 +22,14 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     var playerNames: UIView?
     var scoreBoard: UIView?
     var nextBtn: UIButton?
+    
+    var gameObject: DartGameObjectViewModel?
 
     //@IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gameObject?.delegate = self
         //GetNumberOfSections
         getNumberOfSections()
         //Collection View takes a third of the screen
@@ -170,5 +174,32 @@ extension GameBoardVC {
         scoreBoard = Scoreboard(frame:  CGRect(x: 5, y: (view.frame.height/12)*9, width: view.frame.width-10, height: (view.frame.height/12)*2), numberOfSections: numberOfSections)
         guard let score = scoreBoard else { return }
         view.addSubview(score)
+    }
+}
+
+extension GameBoardVC: DartsGame{
+    
+    func addDartScore() {
+        
+    }
+    
+    func removeDartScore() {
+        
+    }
+    
+    func nextRound() {
+        
+    }
+    
+    func updateStats(_ stats: Stats) {
+        
+    }
+    
+    func updateIndyStats(score: Int, mpr: Double, scratches: DartScratches) {
+        
+    }
+    
+    func checkWinner() {
+        
     }
 }
