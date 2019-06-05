@@ -12,6 +12,7 @@ class ScoreboardCell: UICollectionViewCell {
     
     var width: CGFloat = 0
     var height: CGFloat = 0
+    var gameObject: DartGameObjectViewModel?
     
     var points: [String] = ["20","19","18","17","16","15","Bull"]
     
@@ -49,14 +50,13 @@ class ScoreboardCell: UICollectionViewCell {
             btn.tag = 15+(5-index)
             btn.setTitle("\(points[index])", for: .normal)
             self.addSubview(btn)
-            
-            
-            
         }
     }
     
     @objc func buttonTouched(sender: UIButton!){
         print("Single Touch: \(sender.tag)")
+        let newDart = Dart(points: sender.tag, type: DartScratch.One)
+        gameObject?.addDart(dart: newDart)
     }
     
     @objc func hold(recognizer: UILongPressGestureRecognizer){

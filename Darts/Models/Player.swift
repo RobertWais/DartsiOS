@@ -28,6 +28,14 @@ class Player: NSObject {
         self._ppr = ppr
     }
     
+    init(name: String?, number: Int?){
+        self._name = name
+        self._number = number
+        self._score = 0
+        self._mpr = 0.0
+        self._ppr = 0
+    }
+    
     var name : String{
         guard let name = _name else{
             return ""
@@ -63,6 +71,10 @@ class Player: NSObject {
         return ppr
     }
     
+    func currentIndexOfDart()->Int{
+        return currRound.darts.count
+    }
+    
     func addToCurrentRound(dart: Dart){
         currRound.addDart(addDart: dart)
     }
@@ -92,7 +104,7 @@ class Player: NSObject {
     }
     
     func getScratches()->DartScratches{
-        var dartScratches = DartScratches()
+        let dartScratches = DartScratches()
         
         // Add scratches from previous rounds
         for round in rounds {

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol DartsGame: class {
-    func addDartScore()
-    func removeDartScore()
+    func addDartScore(dart: Dart, index: Int)
+    func removeDartScore(dart: Dart, index: Int)
     func nextRound()
     func updateStats(_ stats: Stats)
     func updateIndyStats(score: Int, mpr: Double, scratches: DartScratches)
@@ -33,16 +33,20 @@ class DartGameObjectViewModel: NSObject{
     
     
     func addDart(dart: Dart){
-        currentPlayer.addToCurrentRound(dart: dart)
+        let indexOfDart = currentPlayer.currentIndexOfDart()
+        if indexOfDart < 3 {
+            currentPlayer.addToCurrentRound(dart: dart)
+            delegate?.addDartScore(dart: dart, index: indexOfDart)
+        }
         // Call back to add UI Dart Display
     }
     
-    func removeDart(dart: Dart){
+    func removeDart(){
+        print("Number: \(currentPlayer.currentIndexOfDart())")
+        if currentPlayer.currentIndexOfDart() == 0 { return }
+        let dart = currentPlayer.currRound.darts[currentPlayer.currentIndexOfDart()-1]
         currentPlayer.removeDartFromCurrentRound(dart: dart)
-        // Call back to remove UI Dart Display
-        
-        // Return all data back Score, MPR, Values - Crossed
-        delegate?.removeDartScore()
+        delegate?.removeDartScore(dart: dart, index: currentPlayer.currentIndexOfDart())
     }
     
     func addRound(){

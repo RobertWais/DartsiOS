@@ -31,7 +31,7 @@ class PlayerNameCell: UIView{
         let seperator = self.frame.width/CGFloat(sections)
         for index in 0..<sections{
             if index != sections/2{
-                var lbl = UILabel(frame: CGRect(x: CGFloat(index)*CGFloat(seperator), y: 0 , width: self.frame.width/CGFloat(sections), height: self.frame.height))
+                let lbl = UILabel(frame: CGRect(x: CGFloat(index)*CGFloat(seperator), y: 0 , width: self.frame.width/CGFloat(sections), height: self.frame.height))
                 lbl.textColor = UIColor.white
                 lbl.text = "Player: \(index)"
                 lbl.textAlignment = NSTextAlignment.center

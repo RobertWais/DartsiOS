@@ -20,8 +20,10 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     
     var collectionView: UICollectionView?
     var playerNames: UIView?
-    var scoreBoard: UIView?
+    var scoreBoard: Scoreboard?
     var nextBtn: UIButton?
+    var deleteBtn: UIButton?
+    var players = [Player]()
     
     var gameObject: DartGameObjectViewModel?
 
@@ -29,6 +31,8 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createPlayers()
+        gameObject = DartGameObjectViewModel(players: players)
         gameObject?.delegate = self
         //GetNumberOfSections
         getNumberOfSections()
@@ -37,6 +41,13 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         //Player names take up a 12th of the screen
         initAllOthers()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func createPlayers(){
+        for index in 0..<4{
+            let player = Player(name: "Player \(index)", number: index)
+            players.append(player)
+        }
     }
 
     // MARK: Collection View
@@ -48,6 +59,7 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         switch indexPath.row {
         case numberOfSections/2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScoreboardCell", for: indexPath)  as! ScoreboardCell
+            cell.gameObject = gameObject
             cell.configureCell(score: "--Score--", width: widthOfCell(), height: heightOfCell())
             return cell
         case emptyCell:
@@ -161,17 +173,31 @@ extension GameBoardVC {
     }
     
     private func initNextBtn(){
-        nextBtn = UIButton(frame: CGRect(x: 0, y: view.frame.height-(view.frame.height/12), width: view.frame.width, height: view.frame.height/12))
+        nextBtn = UIButton(frame: CGRect(x: 0, y: view.frame.height-(view.frame.height/12), width: (view.frame.width/4)*3, height: view.frame.height/12))
         guard let btn = nextBtn else {return}
         
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(UIColor.black, for: .normal)
         btn.setTitle("Next Round", for: .normal)
         view.addSubview(btn)
+        
+        deleteBtn = UIButton(frame: CGRect(x: (view.frame.width/4)*3, y: view.frame.height-(view.frame.height/12), width: view.frame.width/4, height: view.frame.height/12))
+        guard let dbtn = deleteBtn else {return}
+        
+        dbtn.backgroundColor = UIColor.black
+        dbtn.setTitleColor(UIColor.white, for: .normal)
+        dbtn.setTitle("x", for: .normal)
+        dbtn.addTarget(self, action: #selector(deleteBtnPressed(sender:)), for: .touchUpInside)
+        view.addSubview(dbtn)
+    }
+    
+    @objc func deleteBtnPressed(sender: UIButton!){
+        gameObject?.removeDart()
     }
     
     private func initScoreboard(){
         scoreBoard = Scoreboard(frame:  CGRect(x: 5, y: (view.frame.height/12)*9, width: view.frame.width-10, height: (view.frame.height/12)*2), numberOfSections: numberOfSections)
+        scoreBoard?.gameObject = gameObject
         guard let score = scoreBoard else { return }
         view.addSubview(score)
     }
@@ -179,12 +205,12 @@ extension GameBoardVC {
 
 extension GameBoardVC: DartsGame{
     
-    func addDartScore() {
-        
+    func addDartScore(dart: Dart, index: Int) {
+        scoreBoard?.setValue(dart: dart, index: index)
     }
     
-    func removeDartScore() {
-        
+    func removeDartScore(dart: Dart, index: Int) {
+        scoreBoard?.removeValue(dart: dart, index: index)
     }
     
     func nextRound() {

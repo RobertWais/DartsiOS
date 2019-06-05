@@ -31,6 +31,15 @@ class Dart: NSObject {
         return _points
     }
     
+    var displayPoints: String{
+        if _points == 14 {
+            return "BULL"
+            
+        } else {
+            return "\(_points)"
+        }
+    }
+
     var type: DartScratch {
         return _type
     }
