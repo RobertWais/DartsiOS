@@ -50,7 +50,6 @@ class PlayerScoreCell: UICollectionViewCell {
     }
     
     func setScratches(_ dartScratches: DartScratches){
-        print("In set scratches")
         let arr = dartScratches.value
         for index in 0..<arr.count {
             switch arr[index] {

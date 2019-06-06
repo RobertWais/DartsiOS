@@ -12,6 +12,7 @@ class Dart: NSObject {
     
     private var _points: Int = 0
     private var _type: DartScratch
+    private var _scored = false
     
     init(points: Int, type: DartScratch){
         self._points = points
@@ -20,6 +21,12 @@ class Dart: NSObject {
     
     var marks: Int {
         return _type.rawValue
+    }
+    
+    var scored: Bool {
+        set { _scored = newValue }
+        get { return _scored}
+        
     }
     
     

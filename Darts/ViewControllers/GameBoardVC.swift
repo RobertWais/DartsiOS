@@ -19,13 +19,14 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     var insets: CGFloat = 5;
     
     var collectionView: UICollectionView?
-    var playerNames: UIView?
+    var playerNames: PlayerNameCell?
     var scoreBoard: Scoreboard?
     var nextBtn: UIButton?
     var deleteBtn: UIButton?
     var players = [Player]()
     var playerCells = [PlayerScoreCell]()
     var startPlayerIndex = 0
+    var walkIndex = 0
     
     var gameObject: DartGameObjectViewModel?
 
@@ -42,6 +43,8 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         initCV()
         //Player names take up a 12th of the screen
         initAllOthers()
+        
+        startPlayerIndex = 0
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -159,7 +162,6 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     
     private func findCell(name: String)->PlayerScoreCell?{
         for cell in playerCells {
-            print("\(cell.name) == \(name)")
             if cell.name == name {
                 return cell
             }
@@ -182,6 +184,8 @@ extension GameBoardVC {
             // Throw error
             return
         }
+        players.setCurrent(index: startPlayerIndex)
+        startPlayerIndex = startPlayerIndex + 1
         view.addSubview(players)
     }
     
@@ -192,12 +196,15 @@ extension GameBoardVC {
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(UIColor.black, for: .normal)
         btn.setTitle("Next Round", for: .normal)
+        btn.addTarget(self, action: #selector(nextBtnPressed(sender:)), for: .touchUpInside)
         view.addSubview(btn)
         
         deleteBtn = UIButton(frame: CGRect(x: (view.frame.width/4)*3, y: view.frame.height-(view.frame.height/12), width: view.frame.width/4, height: view.frame.height/12))
         guard let dbtn = deleteBtn else {return}
         
         dbtn.backgroundColor = UIColor.black
+        dbtn.layer.borderColor = UIColor.white.cgColor
+        dbtn.layer.borderWidth = 2.0
         dbtn.setTitleColor(UIColor.white, for: .normal)
         dbtn.setTitle("x", for: .normal)
         dbtn.addTarget(self, action: #selector(deleteBtnPressed(sender:)), for: .touchUpInside)
@@ -206,6 +213,10 @@ extension GameBoardVC {
     
     @objc func deleteBtnPressed(sender: UIButton!){
         gameObject?.removeDart()
+    }
+    
+    @objc func nextBtnPressed(sender: UIButton!){
+        gameObject?.addRound()
     }
     
     private func initScoreboard(){
@@ -219,7 +230,6 @@ extension GameBoardVC {
 extension GameBoardVC: DartsGame{
     func retrieveScratches(_ dartScratches: DartScratches, name: String ) {
         var playerCell = findCell(name: name)
-        dartScratches.printScratches()
         playerCell?.setScratches(dartScratches)
     }
     
@@ -232,15 +242,22 @@ extension GameBoardVC: DartsGame{
     }
     
     func nextRound() {
+        // Clear scoreboard
+        scoreBoard?.clearValues()
+        playerNames?.setCurrent(index: (walkIndex+1)%numberOfPlayers)
+        walkIndex = walkIndex + 1
+        // move indicator of player
+    }
+    
+    func updateStats(_ stats: Stat) {
         
     }
     
-    func updateStats(_ stats: Stats) {
-        
-    }
-    
-    func updateIndyStats(score: Int, mpr: Double, scratches: DartScratches) {
-        
+    func updateIndyStats(stat: Stat, name: String, index: Int) {
+        var playerCell = findCell(name: name)
+        var dartScratches = stat.dartScratches
+        playerCell?.setScratches(dartScratches)
+        scoreBoard?.setScore(score: stat.score, index: index)
     }
     
     func checkWinner() {

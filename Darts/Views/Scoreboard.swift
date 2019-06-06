@@ -12,6 +12,7 @@ class Scoreboard: UIView {
 
     var sections: Int = 0
     var slots = [UILabel]()
+    var totalScores = [UILabel]()
     var gameObject: DartGameObjectViewModel?
 
     override init(frame: CGRect) {
@@ -40,6 +41,7 @@ class Scoreboard: UIView {
             }else{
                 
                 view.text = "12"
+                totalScores.append(view)
             }
             view.textAlignment = .center
             view.textColor = UIColor.white
@@ -86,5 +88,15 @@ class Scoreboard: UIView {
     func removeValue(dart: Dart, index: Int){
         //**
         slots[index].text = "-"
+    }
+    
+    func setScore(score: Int, index: Int){
+        totalScores[index].text = "\(score)"
+    }
+    
+    func clearValues(){
+        for slot in slots {
+            slot.text = "-"
+        }
     }
 }

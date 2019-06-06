@@ -84,8 +84,14 @@ class Player: NSObject {
     }
     
     func completeRound(){
-        rounds.append(currRound)
+        addRound()
         currRound.clearRound()
+    }
+    
+    private func addRound(){
+        // Change later, quick fix
+        let newEntry = Round(first: currRound.darts[0], second: currRound.darts[1], third: currRound.darts[2])
+        rounds.append(newEntry)
     }
     
     func getTotalScore()->Int{
@@ -107,6 +113,7 @@ class Player: NSObject {
     func getScratches()->DartScratches{
         let dartScratches = DartScratches()
         
+        getHistory()
         // Add scratches from previous rounds
         for round in rounds {
             dartScratches.addScratch(dart: round.darts[0])
@@ -119,5 +126,15 @@ class Player: NSObject {
             dartScratches.addScratch(dart: currRound.darts[index])
         }
         return dartScratches
+    }
+    
+    func getHistory(){
+        var count = 0
+        for round in rounds {
+            print(" Round: \(count)")
+            for dart in round.darts {
+                print(" Dart: \(dart.points)")
+            }
+        }
     }
 }

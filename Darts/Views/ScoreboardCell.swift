@@ -8,11 +8,14 @@
 
 import UIKit
 
-class ScoreboardCell: UICollectionViewCell {
+class ScoreboardCell: UICollectionViewCell, MultplierViewDelegate {
+    
+    
     
     var width: CGFloat = 0
     var height: CGFloat = 0
     var gameObject: DartGameObjectViewModel?
+    var currentPopUpViews = [MultiplierView]()
     
     var points: [String] = ["20","19","18","17","16","15","Bull"]
     
@@ -45,7 +48,7 @@ class ScoreboardCell: UICollectionViewCell {
             }
             
             let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(hold(recognizer:)))
-            self.addGestureRecognizer(gestureRecognizer)
+            btn.addGestureRecognizer(gestureRecognizer)
             
             btn.tag = 15+(5-index)
             btn.setTitle("\(points[index])", for: .normal)
@@ -54,14 +57,43 @@ class ScoreboardCell: UICollectionViewCell {
     }
     
     @objc func buttonTouched(sender: UIButton!){
-        print("Single Touch: \(sender.tag)")
         let newDart = Dart(points: sender.tag, type: DartScratch.One)
         gameObject?.addDart(dart: newDart)
     }
     
     @objc func hold(recognizer: UILongPressGestureRecognizer){
+        
         if(recognizer.state == UIGestureRecognizer.State.began){
-            print("Single\\Double\\Triple")
+            print("Count: \(currentPopUpViews.count)")
+            if currentPopUpViews.count < 1 {
+                let seperator = height/7
+                print("Single\\Double\\Triple")
+                
+                let mulView = MultiplierView(frame: CGRect(x: 0, y: (recognizer.view?.frame.minY)!, width: width, height: seperator*2))
+                mulView.tag = (recognizer.view?.tag)!
+                self.clipsToBounds = false
+                self.addSubview(mulView)
+                mulView.animate()
+                mulView.delegate = self
+                currentPopUpViews.append(mulView)
+            }
+        }
+    }
+    
+    func sendInfo(_ type: String, tag: Int) {
+        print("Before Count: \(currentPopUpViews.count)")
+        currentPopUpViews.removeAll()
+        print("After: \(currentPopUpViews.count)")
+        switch type {
+        case "T":
+            gameObject?.addDart(dart: Dart(points: tag, type: DartScratch.Three))
+            break
+        case "D":
+            gameObject?.addDart(dart: Dart(points: tag, type: DartScratch.Two))
+            break
+        default:
+            // Cancelled
+            break
         }
     }
     

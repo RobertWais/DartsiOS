@@ -11,6 +11,7 @@ import UIKit
 class PlayerNameCell: UIView{
     
     var sections: Int = 0
+    var lbls = [UILabel]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,8 +36,21 @@ class PlayerNameCell: UIView{
                 lbl.textColor = UIColor.white
                 lbl.text = "Player: \(index)"
                 lbl.textAlignment = NSTextAlignment.center
+                lbls.append(lbl)
                 self.addSubview(lbl)
             }
         }
+    }
+    
+    func setCurrent(index: Int){
+        for lbl in lbls {
+            lbl.textColor = UIColor.white
+            lbl.backgroundColor = UIColor.black
+            lbl.text = "Player: \(index)"
+            lbl.textAlignment = NSTextAlignment.center
+        }
+        
+        lbls[index].textColor = UIColor.black
+        lbls[index].backgroundColor = UIColor.white
     }
 }

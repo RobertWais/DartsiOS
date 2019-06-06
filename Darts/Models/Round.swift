@@ -34,7 +34,9 @@ class Round: NSObject {
     var score: Int {
         var totalScore = 0
         for dart in darts {
-            totalScore += dart.totalDartScore()
+            if(dart.scored == true){
+                totalScore += dart.totalDartScore()
+            }
         }
         return totalScore
     }
