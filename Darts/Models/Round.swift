@@ -53,6 +53,10 @@ class Round: NSObject {
         if darts.count > 3 { return }
         darts.append(addDart)
     }
+    
+    func clearRound(){
+        darts.removeAll()
+    }
 }
 
 

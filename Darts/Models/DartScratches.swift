@@ -36,5 +36,15 @@ class DartScratches {
         let dartScratch = DartScratch.getValue(dart: dart)
         scratches[index] = DartScratch.addValue(firstScratch: dartScratch, secondScratch: scratches[index])
     }
+    
+    var value: [DartScratch] {
+        return scratches
+    }
+    
+    func printScratches(){
+        for scratch in scratches {
+            print("\(DartScratch.getStringRep(scratch))")
+        }
+    }
     //Take in Number and Letter and add or remove scratches
 }

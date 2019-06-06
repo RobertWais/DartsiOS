@@ -11,6 +11,7 @@ import UIKit
 class PlayerScoreCell: UICollectionViewCell {
     
     @IBOutlet weak var playerName: UILabel!
+    private var allLbls = [UILabel]()
     
     //Stages [String]
     var name: String = ""
@@ -43,7 +44,25 @@ class PlayerScoreCell: UICollectionViewCell {
             lbl.textAlignment = NSTextAlignment.center
             lbl.textColor = UIColor.white
             lbl.text = "-"
+            allLbls.append(lbl)
             self.addSubview(lbl)
+        }
+    }
+    
+    func setScratches(_ dartScratches: DartScratches){
+        print("In set scratches")
+        let arr = dartScratches.value
+        for index in 0..<arr.count {
+            switch arr[index] {
+            case DartScratch.None:
+                allLbls[index].text = "-"
+            case DartScratch.One:
+                allLbls[index].text = "/"
+            case DartScratch.Two:
+                allLbls[index].text = "X"
+            case DartScratch.Three:
+                allLbls[index].text = "O"
+            }
         }
     }
 }

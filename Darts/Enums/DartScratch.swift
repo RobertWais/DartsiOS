@@ -47,7 +47,7 @@ enum DartScratch: Int {
     static func getStringRep(_ dartScratch: DartScratch)->String{
         switch dartScratch {
         case DartScratch.None:
-            return "Error"
+            return "Non"
         case DartScratch.One:
             return "S"
         case DartScratch.Two:

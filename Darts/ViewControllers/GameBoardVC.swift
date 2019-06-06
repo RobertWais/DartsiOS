@@ -24,6 +24,8 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
     var nextBtn: UIButton?
     var deleteBtn: UIButton?
     var players = [Player]()
+    var playerCells = [PlayerScoreCell]()
+    var startPlayerIndex = 0
     
     var gameObject: DartGameObjectViewModel?
 
@@ -68,7 +70,9 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerScoreCell", for: indexPath)  as! PlayerScoreCell
-            cell.configureCell(name: "Play: \(indexPath.row)", playerNumber: indexPath.row, width: widthOfCell(), height: heightOfCell())
+            cell.configureCell(name: players[startPlayerIndex].name, playerNumber: indexPath.row, width: widthOfCell(), height: heightOfCell())
+            playerCells.append(cell)
+            startPlayerIndex = startPlayerIndex + 1
             return cell
         }
         
@@ -153,6 +157,15 @@ class GameBoardVC: UIViewController, UICollectionViewDelegate,UICollectionViewDa
         }
     }
     
+    private func findCell(name: String)->PlayerScoreCell?{
+        for cell in playerCells {
+            print("\(cell.name) == \(name)")
+            if cell.name == name {
+                return cell
+            }
+        }
+        return nil
+    }
 }
 
 // Other UI Updates not concerning Collection View
@@ -204,6 +217,11 @@ extension GameBoardVC {
 }
 
 extension GameBoardVC: DartsGame{
+    func retrieveScratches(_ dartScratches: DartScratches, name: String ) {
+        var playerCell = findCell(name: name)
+        dartScratches.printScratches()
+        playerCell?.setScratches(dartScratches)
+    }
     
     func addDartScore(dart: Dart, index: Int) {
         scoreBoard?.setValue(dart: dart, index: index)

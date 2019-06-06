@@ -85,6 +85,7 @@ class Player: NSObject {
     
     func completeRound(){
         rounds.append(currRound)
+        currRound.clearRound()
     }
     
     func getTotalScore()->Int{
