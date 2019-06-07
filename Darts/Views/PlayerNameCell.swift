@@ -46,11 +46,14 @@ class PlayerNameCell: UIView{
         for lbl in lbls {
             lbl.textColor = UIColor.white
             lbl.backgroundColor = UIColor.black
-            lbl.text = "Player: \(index)"
             lbl.textAlignment = NSTextAlignment.center
+//            lbls[index].layer.cornerRadius = 0
+//            lbls[index].layer.masksToBounds = false
         }
         
         lbls[index].textColor = UIColor.black
         lbls[index].backgroundColor = UIColor.white
+        lbls[index].layer.cornerRadius = lbls[index].frame.height/2
+        lbls[index].layer.masksToBounds = true
     }
 }

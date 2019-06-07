@@ -29,7 +29,6 @@ class DartScratches {
     
     func addScratch(dart: Dart){
         // Darts with score less than 15 will not add scratches
-        if dart.points < 15 { return }
         
         let index = getIndex(value: dart.points)
         

@@ -76,6 +76,7 @@ class Player: NSObject {
     }
     
     func addToCurrentRound(dart: Dart){
+        print("Bull happening")
         currRound.addDart(addDart: dart)
     }
     
@@ -110,10 +111,10 @@ class Player: NSObject {
         return Double(totalMarksPerRound + currRound.marks)/Double(rounds.count + 1)
     }
     
+    //  Computes the scratch board for the player
     func getScratches()->DartScratches{
         let dartScratches = DartScratches()
         
-        getHistory()
         // Add scratches from previous rounds
         for round in rounds {
             dartScratches.addScratch(dart: round.darts[0])
@@ -128,13 +129,27 @@ class Player: NSObject {
         return dartScratches
     }
     
-    func getHistory(){
-        var count = 0
-        for round in rounds {
-            print(" Round: \(count)")
-            for dart in round.darts {
-                print(" Dart: \(dart.points)")
+    //  Checks to see if the player has closed all values
+    func allClosed()->Bool {
+        let allScratches = getScratches().value
+        
+        for index in 0..<allScratches.count {
+            if allScratches[index] != DartScratch.Three {
+                return false
             }
         }
+        return true
+    }
+    
+    // Debugging function to see the history of darts for
+    // and individual player
+    func getHistory(){
+//        var count = 0
+//        for round in rounds {
+//            print(" Round: \(count)")
+//            for dart in round.darts {
+//                print(" Dart: \(dart.points)")
+//            }
+//        }
     }
 }

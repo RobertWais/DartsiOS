@@ -51,15 +51,20 @@ class PlayerScoreCell: UICollectionViewCell {
     
     func setScratches(_ dartScratches: DartScratches){
         let arr = dartScratches.value
-        for index in 0..<arr.count {
+        for index in 0..<7 {
+            print("Index: \(index)")
             switch arr[index] {
             case DartScratch.None:
+                print("-")
                 allLbls[index].text = "-"
             case DartScratch.One:
+                print("/")
                 allLbls[index].text = "/"
             case DartScratch.Two:
+                print("X")
                 allLbls[index].text = "X"
             case DartScratch.Three:
+                print("O")
                 allLbls[index].text = "O"
             }
         }

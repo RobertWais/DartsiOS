@@ -23,16 +23,25 @@ class DartGameObjectViewModel: NSObject{
     //Create delegate
     weak var delegate: DartsGame?
     var players = [Player]()
+    
     var currentPlayer: Player!
     var closedNumbers = [false, false, false, false, false, false, false]
+    var closedPlayers = [Bool]()
     
     var counter = 0
     
     init(players: [Player]){
+        super.init()
         self.players = players
         currentPlayer = players[0]
+        createClosedPlayers()
     }
     
+    func createClosedPlayers(){
+        for _ in 0..<players.count {
+            closedPlayers.append(false)
+        }
+    }
     
     func addDart(dart: Dart){
         let indexOfDart = currentPlayer.currentIndexOfDart()
@@ -46,6 +55,7 @@ class DartGameObjectViewModel: NSObject{
             delegate?.updateIndyStats(stat: Stat(score: currentPlayer.getTotalScore(), mpr: currentPlayer.getTotalMarksPerRound(), scratches: currentPlayer.getScratches()), name: currentPlayer.name, index: (counter%players.count))
         }
         checkClosedValue()
+        checkWinner()
         // Call back to add UI Dart Display
     }
     
@@ -56,6 +66,7 @@ class DartGameObjectViewModel: NSObject{
         delegate?.removeDartScore(dart: dart, index: currentPlayer.currentIndexOfDart())
         delegate?.updateIndyStats(stat: Stat(score: currentPlayer.getTotalScore(), mpr: currentPlayer.getTotalMarksPerRound(), scratches: currentPlayer.getScratches()), name: currentPlayer.name, index: (counter%players.count))
         checkClosedValue()
+        checkWinner()
     }
     
     func addRound(){
@@ -86,6 +97,15 @@ class DartGameObjectViewModel: NSObject{
     
     func checkWinner(){
         // Stop game, Modal Pop - Up confirming win, Close or keep playing
+        if currentPlayer.allClosed() {
+            // And has highest score
+            print(" Winner ")
+        }
+//        for player in closedPlayers {
+//            if player = true {
+//                print("Winner")
+//            }
+//        }
     }
     
     func checkClosedValue(){
