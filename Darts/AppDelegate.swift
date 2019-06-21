@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let initialViewController: UIViewController
-        initialViewController = GameBoardVC()
+        //initialViewController = GameBoardVC()
+        initialViewController = ChoosePlayersVC()
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
         return true
